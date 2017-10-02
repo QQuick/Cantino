@@ -1,4 +1,5 @@
-.. code-block::
+.. code-block:: python
+
     #include "cantino.h"
 
     using namespace cantino;
