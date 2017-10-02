@@ -1,8 +1,7 @@
 cantino	KEYWORD1
 
 SerialStream	KEYWORD1
-<<	KEYWORD2
-<<	KEYWORD2
+endl	KEYWORD2
 
 Timer	KEYWORD1
 tick	KEYWORD2
