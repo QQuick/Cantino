@@ -1,4 +1,4 @@
-.. code-block:: python
+.. code-block:: c++
 
     #include "cantino.h"
 
