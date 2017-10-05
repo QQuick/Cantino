@@ -10,7 +10,7 @@ while the generated code becomes more compact than ever before.
 This one's about writing fast, flexible Arduino applications with a tiny memory footprint.**
 
 Cantino comes with a microscopic library that allows the use *main*, *cin* en *cout* in the familiar Arduino Genuino IDE.
-To keep it accessible to anyone, an absolute minimum of peripheral hardware is used.
+To keep the course accessible to anyone, an absolute minimum of peripheral hardware is used in the examples.
 
 Enjoy!
 
