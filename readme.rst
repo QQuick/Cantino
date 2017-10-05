@@ -9,8 +9,8 @@ while the generated code becomes more compact than ever before.
 **Many C++ courses are about writing GUI-oriented software, meant to be run on a PC.
 This one's about writing fast, flexible Arduino applications with a tiny memory footprint.**
 
-Cantino comes with a microscopic library that a.o. allows for standard C++ program structure,
-while allowing continued use of the familiar Arduino Genuino IDE.
+Cantino comes with a microscopic library that makes it possible to use *main*, *cin* en *cout*,
+while remaining compatible with the familiar Arduino Genuino IDE.
 
 Enjoy!
 
