@@ -10,9 +10,11 @@ while the generated code becomes more compact than ever before.
 This one's about writing fast, flexible Arduino applications with a tiny memory footprint.**
 
 Cantino comes with a microscopic library that allows the use *main*, *cin* en *cout* in the familiar Arduino Genuino IDE.
-To keep the course accessible to anyone, an absolute minimum of peripheral hardware is used in the examples.
+To keep Cantino accessible to anyone, an absolute minimum of peripheral hardware is used in the examples.
 
-Enjoy!
+Cantino doesn't assume any previous programming knowledge and can be used as a first time course in any curriculum.
+To complete it successfully you only need two things: curiosity and persistence.
+You'll be a C++ programmer after that, so let's get started...
 
 Jacques de Hooge
 
