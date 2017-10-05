@@ -51,6 +51,10 @@ struct SerialStream {
 
 extern const char endl;
 
+#ifndef noCinCout
+extern SerialStream cin, cout;
+#endif
+
 // ====== Timers
 
 struct Timer {

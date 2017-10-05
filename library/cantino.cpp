@@ -130,6 +130,10 @@ SerialStream &SerialStream::operator<< (float aFloat) {
 
 const char endl = '\n';
 
+#ifndef noCinCout
+SerialStream cin (Serial), cout (Serial);
+#endif
+
 // ====== Timers
 
 static long Timer::currentTime = 0;

@@ -1,0 +1,15 @@
+cantino			KEYWORD1
+
+SerialStream	KEYWORD1
+cin				KEYWORD2
+cout			KEYWORD2
+endl			KEYWORD2
+
+Timer			KEYWORD1
+tick			KEYWORD2
+resetIf			KEYWORD2
+
+Oneshot			KEYWORD1
+triggerIf		KEYWORD2
+
+main			KEYWORD2
