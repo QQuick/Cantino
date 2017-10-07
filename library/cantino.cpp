@@ -28,7 +28,7 @@ SerialStream::SerialStream (HardwareSerial &serial):
     serial (&serial)
 {}
 
-SerialStream &SerialStream::operator>> (char * const chars) {
+SerialStream &SerialStream::operator>> (char *const chars) {
     for (int index = 0; ; index++) {
         while (!serial->available ()) {  // Wait for input
         }
@@ -85,7 +85,7 @@ SerialStream &SerialStream::operator>> (float &aFloat) {
      aFloat = atof (conversionBuffer);
      return *this;    
 }
-SerialStream &SerialStream::operator<< (const char * const chars) {
+SerialStream &SerialStream::operator<< (char const *const chars) {
     serial->write (chars);
     serial->flush ();
     return *this;
@@ -128,7 +128,7 @@ SerialStream &SerialStream::operator<< (float aFloat) {
     return (*this) << conversionBuffer;
 }
 
-const char endl = '\n';
+char const endl = '\n';
 
 #ifndef noCinCout
 SerialStream cin (Serial), cout (Serial);

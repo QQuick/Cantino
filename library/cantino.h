@@ -28,7 +28,7 @@ struct SerialStream {
 
     SerialStream (HardwareSerial &serial);
     
-    SerialStream &operator>> (char * const chars);
+    SerialStream &operator>> (char *const chars);
     SerialStream &operator>> (bool &aBool);
     SerialStream &operator>> (char &aChar);
     SerialStream &operator>> (unsigned char &anUChar);
@@ -38,7 +38,7 @@ struct SerialStream {
     SerialStream &operator>> (unsigned long &anULong);
     SerialStream &operator>> (float &aFloat);
     
-    SerialStream &operator<< (const char * const chars);
+    SerialStream &operator<< (char const *const chars);
     SerialStream &operator<< (bool aBool);
     SerialStream &operator<< (char aChar);
     SerialStream &operator<< (unsigned char anUChar);
@@ -49,7 +49,7 @@ struct SerialStream {
     SerialStream &operator<< (float aFloat);
 };
 
-extern const char endl;
+extern char const endl;
 
 #ifndef noCinCout
 extern SerialStream cin, cout;

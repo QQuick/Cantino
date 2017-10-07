@@ -4,8 +4,8 @@ using namespace cantino;
 
 int main () {
     SerialStream console (Serial);
-    const int nrOfTimers = 2;
-    const int period = 2000;
+    int const nrOfTimers = 2;
+    int const period = 2000;
     Timer timers [nrOfTimers];
     Oneshot oneshots1 [nrOfTimers];
     Oneshot oneshots2 [nrOfTimers];
