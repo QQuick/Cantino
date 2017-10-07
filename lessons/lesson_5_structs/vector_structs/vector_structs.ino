@@ -18,7 +18,7 @@ void showVector (Vector v) {
 }
 
 int main () {
-    Vector speed1 = {1, 2, 3}, speed2 = {4, 6, 8}, totalSpeed;
+    Vector speed1 = {1, 2, 3}, speed2 = {2, 4, 6}, totalSpeed;
     totalSpeed = addVectors (speed1, speed2);
     showVector (speed1);
     showVector (speed2);

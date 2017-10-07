@@ -3,6 +3,8 @@ using namespace cantino;
 
 int const timeUnit = 50;
 int const buzzerPin = 11;
+int const frequencyOfStandardA = 440;
+int const beepFrequency = 2 * 2 * frequencyOfStandardA; //  Each doubling is an octave up
 
 char const *const morseCodes [] = {
     ".-",       // a
@@ -49,7 +51,7 @@ void delayUnits (int duration) {
 }
 
 void beep (int duration) {
-    tone (buzzerPin, 1000);
+    tone (buzzerPin, beepFrequency);
     delayUnits (duration);
     noTone (buzzerPin);
     delayUnits (1);
