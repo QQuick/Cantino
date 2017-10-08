@@ -14,17 +14,32 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
-    public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
-        bool read ();
-        float getDistance ();
+#include <cantino.h>
+#include "devices.h"
 
-    private:
-        static float const soundSpeedInAir;
-        static float const echoToDistanceFactor;
+Device::Device (int pinIndex):
+    pinIndex (pinIndex)
+{
+}
 
-        int pinIndex;
-        int triggerPinIndex;
-        float switchDistance;
-};
+Sensor::Sensor (int pinIndex):
+    Device (pinIndex)
+{
+    pinMode (this->pinIndex, INPUT);
+}
+
+
+Actuator::Actuator (int pinIndex):
+    Device (pinIndex)
+{
+    pinMode (this->pinIndex, OUTPUT);
+    state = false;
+}
+
+bool Actuator::read () {
+    return state;
+}
+
+void Actuator::write (bool state) {
+    this->state = state;
+}

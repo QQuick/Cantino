@@ -14,17 +14,31 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
-    public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
-        bool read ();
-        float getDistance ();
+#pragma once
 
-    private:
-        static float const soundSpeedInAir;
-        static float const echoToDistanceFactor;
+class Device {
+    public:
+        virtual bool read () = 0;
 
+    protected:
+        Device (int pinIndex);
+        
         int pinIndex;
-        int triggerPinIndex;
-        float switchDistance;
 };
+
+class Sensor: public Device {
+    public:
+        Sensor (int pinIndex);
+};
+
+class Actuator: public Device {
+    public:
+        Actuator (int pinIndex);
+        virtual bool read ();
+
+    protected:
+        virtual void write (bool state);
+        
+        bool state;
+};
+

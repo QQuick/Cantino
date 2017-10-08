@@ -14,9 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
+#pragma once
+
+#include "devices.h"
+
+class UltrasoundSensor: public Sensor {
     public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
+        UltrasoundSensor (char const *const label, int pinIndex, int triggerPinIndex, float switchDistance);
         bool read ();
         float getDistance ();
 
@@ -24,7 +28,6 @@ class UltrasoundSensor {
         static float const soundSpeedInAir;
         static float const echoToDistanceFactor;
 
-        int pinIndex;
         int triggerPinIndex;
         float switchDistance;
 };

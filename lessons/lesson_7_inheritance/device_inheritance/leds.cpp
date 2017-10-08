@@ -14,17 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
-    public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
-        bool read ();
-        float getDistance ();
+#include <cantino.h>
+#include "leds.h"
 
-    private:
-        static float const soundSpeedInAir;
-        static float const echoToDistanceFactor;
+using namespace cantino;
 
-        int pinIndex;
-        int triggerPinIndex;
-        float switchDistance;
-};
+Led::Led (int pinIndex):
+    Actuator (pinIndex)
+{
+}
+
+void Led::write (bool state) {
+    Actuator::write (state);
+    digitalWrite (pinIndex, this->state);
+}
+

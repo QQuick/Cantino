@@ -15,23 +15,37 @@ limitations under the License.
 */
 
 #include <cantino.h>
-#include "leds.h"
+#include "devices.h"
 
 using namespace cantino;
 
-Led::Led (int pinIndex):
-    pinIndex (pinIndex)
+Device::Device (char const *const label, int pinIndex):
+    pinIndex (pinIndex),
+    label (label)
+{
+}
+
+void Device::report () {
+    cout << label << ":" << (read () ? 1:0) << ' ';
+}
+
+Sensor::Sensor (char const *const label, int pinIndex):
+    Device (label, pinIndex)
+{
+    pinMode (this->pinIndex, INPUT);
+}
+
+Actuator::Actuator (char const *const label, int pinIndex):
+    Device (label, pinIndex)
 {
     pinMode (this->pinIndex, OUTPUT);
+    state = false;
 }
 
-void Led::write (bool state) {
-    this->state = state;
-    digitalWrite (this->pinIndex, this->state);
-}
-
-bool Led::read () {
+bool Actuator::read () {
     return state;
 }
 
-
+void Actuator::write (bool state) {
+    this->state = state;
+}

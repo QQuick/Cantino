@@ -19,10 +19,11 @@ limitations under the License.
 
 using namespace cantino;
 
-UltrasoundSensor::UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance):
-    pinIndex (pinIndex), triggerPinIndex (triggerPinIndex), switchDistance (switchDistance)
+UltrasoundSensor::UltrasoundSensor (char const *const label, int pinIndex, int triggerPinIndex, float switchDistance):
+    Sensor (label, pinIndex),
+    triggerPinIndex (triggerPinIndex), 
+    switchDistance (switchDistance)
 {
-    pinMode (pinIndex, INPUT);
     pinMode (triggerPinIndex, OUTPUT);
 }
 

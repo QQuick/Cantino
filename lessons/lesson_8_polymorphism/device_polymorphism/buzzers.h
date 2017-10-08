@@ -14,17 +14,16 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
-    public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
-        bool read ();
-        float getDistance ();
+#pragma once
 
+#include "devices.h"
+
+class Buzzer: public Actuator {
+    public:
+        Buzzer (char const *const label, int pinIndex, int frequency);
+        void write (bool state);
+        
     private:
-        static float const soundSpeedInAir;
-        static float const echoToDistanceFactor;
-
-        int pinIndex;
-        int triggerPinIndex;
-        float switchDistance;
+        int frequency;
 };
+

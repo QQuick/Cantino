@@ -14,17 +14,23 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-class UltrasoundSensor {
-    public:         
-        UltrasoundSensor (int pinIndex, int triggerPinIndex, float switchDistance);
-        bool read ();
-        float getDistance ();
+#include <cantino.h>
+#include "buzzers.h"
 
-    private:
-        static float const soundSpeedInAir;
-        static float const echoToDistanceFactor;
+using namespace cantino;
 
-        int pinIndex;
-        int triggerPinIndex;
-        float switchDistance;
-};
+Buzzer::Buzzer (char const *const label, int pinIndex, int frequency):
+    Actuator (label, pinIndex),
+    frequency (frequency)
+{
+}
+
+void Buzzer::write (bool state) {
+    Actuator::write (state);
+    if (this->state) {
+        tone (pinIndex, frequency);
+    }
+    else {
+        noTone (pinIndex);
+    }
+}

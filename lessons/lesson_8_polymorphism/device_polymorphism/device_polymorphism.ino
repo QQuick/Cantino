@@ -16,6 +16,7 @@ limitations under the License.
 
 #include <cantino.h>
 
+#include "devices.h"
 #include "switches.h"
 #include "ultrasound_sensors.h"
 #include "leds.h"
@@ -26,17 +27,25 @@ using namespace cantino;
 int main () {
     int const frequencyOfStandardA = 440;
     
-    Switch aSwitch (2);
-    UltrasoundSensor ultrasoundSensor (4, 3, 0.2);
-    Led greenLed (11), redLed (12);
-    Buzzer buzzer (13, 4 * frequencyOfStandardA);
-    
+    Switch aSwitch ("sw", 2);
+    UltrasoundSensor ultrasoundSensor ("us", 4, 3, 0.2);
+    Led greenLed ("gl", 11), redLed ("rl", 12);
+    Buzzer buzzer ("bz", 13, 4 * frequencyOfStandardA);
+
+    Device *devices [] = {&aSwitch, &ultrasoundSensor, &redLed, &greenLed, &buzzer};
+    const int nrOfDevices = sizeof (devices) / sizeof (Device *);
+
     while (true) {
         greenLed.write (aSwitch.read ());
         redLed.write (!greenLed.read ());
-        buzzer.write (ultrasoundSensor.read ()); 
+        buzzer.write (ultrasoundSensor.read ());
+    
+        for (int deviceIndex = 0; deviceIndex < nrOfDevices; deviceIndex++) {
+            devices [deviceIndex] ->report ();
+        }
+        cout << endl;
     }
-     
+
     return 0;
 }
 
