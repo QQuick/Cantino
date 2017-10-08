@@ -16,13 +16,27 @@ limitations under the License.
 
 #include <cantino.h>
 
+#include "switches.h"
+#include "ultrasound_sensors.h"
+#include "leds.h"
+#include "buzzers.h"
+
 using namespace cantino;
 
 int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
+    int const frequencyOfStandardA = 440;
+    
+    Switch aSwitch (2);
+    UltrasoundSensor ultrasoundSensor (3, 4, 20);
+    Led greenLed (11), redLed (12);
+    Buzzer buzzer (13, 4 * frequencyOfStandardA);
+    
+    while (true) {
+        greenLed.write (aSwitch.read ());
+        redLed.write (greenLed.read ());
+        buzzer.write (ultrasoundSensor.read ()); 
+    }
+     
     return 0;
 }
 

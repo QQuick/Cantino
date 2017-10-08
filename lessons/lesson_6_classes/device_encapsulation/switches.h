@@ -14,15 +14,13 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <cantino.h>
+class Switch {
+    public:
+        Switch (int pinIndex);
+        bool read ();
+        
+    private:
+        int pinIndex;
+};
 
-using namespace cantino;
-
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
-}
 

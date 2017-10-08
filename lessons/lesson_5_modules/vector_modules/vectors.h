@@ -14,15 +14,18 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <cantino.h>
+#pragma once
 
-using namespace cantino;
+namespace vectors {
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
+struct Vector {
+    float x, y, z;
+};
+
+extern Vector addVectors (Vector v1, Vector v2);
+extern void showVector (Vector v);
+
+extern Vector zeroVector;
+
 }
 

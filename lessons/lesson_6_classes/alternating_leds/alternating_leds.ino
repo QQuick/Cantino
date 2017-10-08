@@ -18,18 +18,46 @@ limitations under the License.
 
 using namespace cantino;
 
-bool switchBuiltinLed (bool aState, long aTime) {
-    digitalWrite (LED_BUILTIN, aState);
-    delay (aTime);
-    return !aState;
+//  Class declarations
+
+class Led {
+    public:
+        Led (int pinIndex);
+        void write (bool state);
+        bool read ();
+    private:
+        int aPinIndex;
+        bool aState;
+};
+
+// Method definitions
+
+Led::Led (int pinIndex) {
+    aPinIndex = pinIndex;
+    aState = false;
+    pinMode (aPinIndex, OUTPUT);
 }
 
-int main () {
-    pinMode (LED_BUILTIN, OUTPUT);
+void Led::write (bool state) {
+    aState = state;
+    digitalWrite (aPinIndex, aState);
+}
 
-    bool state = true;
+bool Led::read () {
+    return aState;
+}
+
+// Object instantiations and use
+
+int main () {
+    Led led0 (2), led1 (3);
+    static bool toggle = false;
+
     while (true) {
-        state = switchBuiltinLed (state, 500);
+        led0.write (toggle);
+        led1.write (!led0.read ());
+        toggle = !toggle;
+        delay (500);
     }
     
     return 0;

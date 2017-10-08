@@ -15,14 +15,23 @@ limitations under the License.
 */
 
 #include <cantino.h>
+#include "leds.h"
 
 using namespace cantino;
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
+Led::Led (int pinIndex):
+    pinIndex (pinIndex)
+{
+    pinMode (this->pinIndex, OUTPUT);
 }
+
+void Led::write (bool state) {
+    this->state = state;
+    digitalWrite (this->pinIndex, this->state);
+}
+
+bool Led::read () {
+    return this->state;
+}
+
 

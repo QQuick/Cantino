@@ -14,15 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <cantino.h>
+#pragma once
 
-using namespace cantino;
+class Led {
+    public:
+        Led (int pinIndex);
+        void write (bool state);
+        bool read ();
+        
+    private:
+        int pinIndex;
+        bool state;
+};
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
-}
 

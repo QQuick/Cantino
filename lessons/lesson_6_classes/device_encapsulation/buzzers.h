@@ -14,15 +14,15 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <cantino.h>
-
-using namespace cantino;
-
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
-}
+class Buzzer {
+    public:
+        Buzzer (int pinIndex, int frequency);
+        void write (bool state);
+        bool read ();
+        
+    private:
+        int pinIndex;
+        int frequency;
+        bool state;
+};
 

@@ -15,14 +15,26 @@ limitations under the License.
 */
 
 #include <cantino.h>
+#include "vectors.h"
 
 using namespace cantino;
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
+namespace vectors {
+    
+Vector addVectors (Vector v1, Vector v2) {
+    Vector v3;
+    v3.x = v1.x + v2.x;
+    v3.y = v1.y + v2.y;
+    v3.z = v1.z + v2.z;
+    return v3;
 }
+
+void showVector (Vector v) {
+    cout << '(' << v.x << ", " << v.y << ", " << v.z << ')' << endl;
+}
+
+Vector zeroVector;
+
+}
+
 

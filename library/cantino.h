@@ -1,6 +1,4 @@
 /*
-====== Legal notices
-
 Copyright 2017 Jacques de Hooge, GEATEC engineering, www.geatec.com
 
 Licensed under the Apache License, Version 2.0 (the "License");
@@ -17,6 +15,8 @@ limitations under the License.
 */
 
 #pragma once
+
+#include <arduino.h>
 
 namespace cantino {
 

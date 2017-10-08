@@ -15,14 +15,29 @@ limitations under the License.
 */
 
 #include <cantino.h>
+#include "buzzers.h"
 
 using namespace cantino;
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
+Buzzer::Buzzer (int pinIndex, int frequency):
+    pinIndex (pinIndex),
+    frequency (frequency),
+    state (false)
+{
+    pinMode (this->pinIndex, OUTPUT);
+}
+
+void Buzzer::write (bool state) {
+    this->state = state;
+    if (this->state) {
+        tone (pinIndex, this->frequency);
+    }
+    else {
+        noTone (pinIndex);
+    }
+}
+
+bool Buzzer::read () {
+    return state;
 }
 

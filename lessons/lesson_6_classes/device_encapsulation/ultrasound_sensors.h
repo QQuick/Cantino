@@ -14,15 +14,17 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <cantino.h>
+class UltrasoundSensor {
+    public:         
+        UltrasoundSensor (int triggerPin, int echoPin, float switchDistance);
+        bool read ();
+        float getDistance ();
 
-using namespace cantino;
+    private:
+        float const soundSpeedInAir;
+        float const echoToDistanceFactor;
 
-int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
-    return 0;
-}
-
+        int triggerPin;
+        int echoPin;
+        float switchDistance;
+};

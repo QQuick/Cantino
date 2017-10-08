@@ -19,10 +19,12 @@ limitations under the License.
 using namespace cantino;
 
 int main () {
-    cout << "What's your name? ";
-    char name [32];
-    cin >> name;
-    cout << "Hi, " << name << ", this is your Arduino speaking!" << endl;
+    const int tableNr = 3;
+    
+    for (int lineNr = 1; lineNr <= 10; lineNr++) {
+        cout << lineNr << " x " << tableNr << " = " << lineNr * tableNr << endl;
+    }
+    
     return 0;
 }
 
