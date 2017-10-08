@@ -27,13 +27,13 @@ int main () {
     int const frequencyOfStandardA = 440;
     
     Switch aSwitch (2);
-    UltrasoundSensor ultrasoundSensor (3, 4, 20);
+    UltrasoundSensor ultrasoundSensor (3, 4, 0.2);
     Led greenLed (11), redLed (12);
     Buzzer buzzer (13, 4 * frequencyOfStandardA);
     
     while (true) {
         greenLed.write (aSwitch.read ());
-        redLed.write (greenLed.read ());
+        redLed.write (!greenLed.read ());
         buzzer.write (ultrasoundSensor.read ()); 
     }
      

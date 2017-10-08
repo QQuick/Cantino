@@ -21,8 +21,8 @@ class UltrasoundSensor {
         float getDistance ();
 
     private:
-        float const soundSpeedInAir;
-        float const echoToDistanceFactor;
+        static float const soundSpeedInAir;
+        static float const echoToDistanceFactor;
 
         int triggerPin;
         int echoPin;

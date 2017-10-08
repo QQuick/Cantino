@@ -22,10 +22,10 @@ using namespace cantino;
 Switch::Switch (int pinIndex):
     pinIndex (pinIndex)
 {
-    pinMode (pinIndex, OUTPUT);
+    pinMode (pinIndex, INPUT_PULLUP);
 }
 
 bool Switch::read () {
-    return digitalRead (pinIndex);
+    return !digitalRead (pinIndex);
 }
 

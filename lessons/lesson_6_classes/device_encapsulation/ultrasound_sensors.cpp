@@ -39,7 +39,7 @@ float UltrasoundSensor::getDistance () {
     return echoToDistanceFactor * pulseIn (echoPin, true);
 }
 
-float const UltrasoundSensor::soundSpeedInAir = 340;
-float const UltrasoundSensor::echoToDistanceFactor = soundSpeedInAir * 1e-6 / 2;
+static float const UltrasoundSensor::soundSpeedInAir = 340;
+static float const UltrasoundSensor::echoToDistanceFactor = soundSpeedInAir * 1e-6 / 2;
 
 
