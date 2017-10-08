@@ -20,8 +20,8 @@ limitations under the License.
 using namespace cantino;
 
 Device::Device (char const *const label, int pinIndex):
-    pinIndex (pinIndex),
-    label (label)
+    label (label),
+    pinIndex (pinIndex)
 {
 }
 
@@ -36,10 +36,10 @@ Sensor::Sensor (char const *const label, int pinIndex):
 }
 
 Actuator::Actuator (char const *const label, int pinIndex):
-    Device (label, pinIndex)
+    Device (label, pinIndex),
+    state (false)
 {
     pinMode (this->pinIndex, OUTPUT);
-    state = false;
 }
 
 bool Actuator::read () {
