@@ -12,7 +12,8 @@ class Vector {
         Vector (float x, float y, float z);
         Vector (float components [size]);
         Vector (Vector &vector);        
-        Vector (Vector &&vector);        
+        Vector (Vector &&vector);
+        float &operator[] (int index);
         Vector operator+ (Vector &vector);
         Vector &operator= (Vector const &vector);
 
