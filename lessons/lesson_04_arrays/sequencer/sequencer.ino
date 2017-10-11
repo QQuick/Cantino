@@ -19,7 +19,7 @@ limitations under the License.
 using namespace cantino;
 
 int main () {
-    int const ledPins [] = {4, 5, 6, 7};
+    int const ledPins [] = {9, 10, 11, 12};
     
     int const nrOfTracks = sizeof (ledPins) / sizeof (int);
     int const nrOfSteps = 8;

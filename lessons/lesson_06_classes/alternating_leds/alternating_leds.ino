@@ -50,7 +50,7 @@ bool Led::read () {
 // Object instantiations and use
 
 int main () {
-    Led led0 (2), led1 (3);
+    Led led0 (11), led1 (12);
     static bool toggle = false;
 
     while (true) {
