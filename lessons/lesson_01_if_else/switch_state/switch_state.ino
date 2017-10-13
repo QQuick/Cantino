@@ -62,7 +62,7 @@ int main () {
     
         long currentTime = millis ();
         
-        // ====== Separate state machine for the LED, has 2 states
+        // ====== Separate state machine for blinking traffic light, has 2 phases
         
         switch (blinkState) {
             case offBlinkState:
@@ -97,7 +97,7 @@ int main () {
                 break;
         }
     
-        // ====== Separate state machine for the phase, has 3 states
+        // ====== Separate state machine for red, green, yellow phase traffic light, has 3 phases
         
         switch (phaseState) {
             case greenPhaseState:
