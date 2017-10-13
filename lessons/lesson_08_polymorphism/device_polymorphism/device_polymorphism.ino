@@ -29,7 +29,7 @@ int main () {
     
     Switch aSwitch ("sw", 2);
     UltrasoundSensor ultrasoundSensor ("us", 4, 3, 0.2);
-    Led greenLed ("gl", 11), redLed ("rl", 12);
+    Led greenLed ("gl", 10), redLed ("rl", 12);
     Buzzer buzzer ("bz", 13, 4 * frequencyOfStandardA);
 
     Device *devices [] = {&aSwitch, &ultrasoundSensor, &redLed, &greenLed, &buzzer};

@@ -42,8 +42,8 @@ int main () {
     Stack <Actuator> actuators;
     actuators.push (new Buzzer (13, 4 * frequencyOfStandardA), "bz");
     actuators.push (new Led (9), "ld_y1");
-    actuators.push (new Led (10), "ld_y2");
-    actuators.push (new Led (11), "ld_gr");
+    actuators.push (new Led (10), "ld_gr");
+    actuators.push (new Led (11), "ld_y2");
     actuators.push (new Led (12), "ld_re");
 
     for (int i = 0; i < 100; i++) {

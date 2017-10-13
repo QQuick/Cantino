@@ -28,7 +28,7 @@ int main () {
     
     Switch aSwitch (2);
     UltrasoundSensor ultrasoundSensor (4, 3, 0.2);
-    Led greenLed (11), redLed (12);
+    Led greenLed (10), redLed (12);
     Buzzer buzzer (13, 4 * frequencyOfStandardA);
     
     while (true) {
