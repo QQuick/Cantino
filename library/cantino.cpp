@@ -181,7 +181,7 @@ void setup () {
 }
 
 void loop () {
-    return;
+    exit (0);
 }
 
 
