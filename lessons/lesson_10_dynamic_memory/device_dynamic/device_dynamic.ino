@@ -44,7 +44,7 @@ int main () {
     
     const int nrOfActuators = sizeof (actuators) / sizeof (Actuator *);
 
-    while (true) {
+    for (int index = 0; index < 10000; index++) {
         for (int actuatorIndex = 0; actuatorIndex < nrOfActuators; actuatorIndex++) {
              (* actuators [actuatorIndex]) (* sensors [actuatorIndex % nrOfSensors]);
         }
