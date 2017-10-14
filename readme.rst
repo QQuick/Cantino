@@ -17,4 +17,3 @@ To complete it successfully you only need two things: curiosity and persistence.
 You'll be a C++ programmer after that, so let's get started...
 
 Jacques de Hooge
-
