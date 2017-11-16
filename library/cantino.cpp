@@ -16,6 +16,10 @@ limitations under the License.
 
 #include <arduino.h>
 
+#if defined (_VARIANT_ARDUINO_DUE_X_)
+#include <avr/dtostrf.h>
+#endif
+
 #include "cantino.h"
 
 namespace cantino {
@@ -26,60 +30,70 @@ SerialStream::SerialStream (HardwareSerial &serial):
     serial (&serial)
 {}
 
-SerialStream &SerialStream::operator>> (char *const chars) {
+void SerialStream::read (char *const chars, bool breakOnBlank) {
     for (int index = 0; ; index++) {
         while (!serial->available ()) {  // Wait for input
         }
         chars [index] = serial->read ();
         serial->print (chars [index]);
-        if (chars [index] == '\n') {
+        if (chars [index] == '\n' or (breakOnBlank and chars [index] == ' ')) {
             chars [index] = (char) 0;
             break;
         }
         while (serial->available ()) {   // Clear Serial's internal buffer
         }
     }
+}
+
+SerialStream &SerialStream::operator>> (char *const chars) {
+    read (chars);
     return *this;
 }
 
 SerialStream &SerialStream::operator>> (bool &aBool) {
-     (*this) >> conversionBuffer;
+     read (conversionBuffer);
      aBool = strcmp (conversionBuffer, "true") == 0;
      return *this;
 }
 
 SerialStream &SerialStream::operator>> (char &aChar) {   
-     (*this) >> conversionBuffer;
+     read (conversionBuffer);
      aChar = conversionBuffer [0];
      return *this;
 }
 
-SerialStream &SerialStream::operator>> (unsigned char &anUChar) {
-    return (*this) >> int (anUChar);
+SerialStream &SerialStream::operator>> (unsigned char &aUChar) {
+    read (conversionBuffer);
+    aUChar = atoi (conversionBuffer);
+    return *this;
 }
 
 SerialStream &SerialStream::operator>> (int &anInt) {
-     (*this) >> conversionBuffer;
+     read (conversionBuffer);
      anInt = atoi (conversionBuffer);
      return *this;    
 }
 
-SerialStream &SerialStream::operator>> (unsigned int &anUInt) {
-    return (*this) >> long (anUInt);
+SerialStream &SerialStream::operator>> (unsigned int &aUInt) {
+    read (conversionBuffer);
+    aUInt = atol (conversionBuffer);
+    return *this;
 }
 
 SerialStream &SerialStream::operator>> (long &aLong) {
-     (*this) >> conversionBuffer;
+     read (conversionBuffer);
      aLong = atol (conversionBuffer);
      return *this;    
 }
 
-SerialStream &SerialStream::operator>> (unsigned long &anULong) {
-     return (*this) >> long (anULong);    
+SerialStream &SerialStream::operator>> (unsigned long &aULong) {
+     read (conversionBuffer);
+     aULong = atol (conversionBuffer);  // Will overflow
+     return *this;
 }
 
 SerialStream &SerialStream::operator>> (float &aFloat) {
-     (*this) >> conversionBuffer;
+     read (conversionBuffer);
      aFloat = atof (conversionBuffer);
      return *this;    
 }
@@ -99,8 +113,8 @@ SerialStream &SerialStream::operator<< (char aChar) {
     return (*this) << conversionBuffer;
 }
 
-SerialStream &SerialStream::operator<< (unsigned char anUChar) {
-    return (*this) << int (anUChar);
+SerialStream &SerialStream::operator<< (unsigned char aUChar) {
+    return (*this) << int (aUChar);
 }
 
 SerialStream &SerialStream::operator<< (int anInt) {
@@ -108,8 +122,8 @@ SerialStream &SerialStream::operator<< (int anInt) {
     return (*this) << conversionBuffer;
 }
 
-SerialStream &SerialStream::operator<< (unsigned int anUInt) {
-    return (*this) << long (anUInt);
+SerialStream &SerialStream::operator<< (unsigned int aUInt) {
+    return (*this) << long (aUInt);
 }
 
 SerialStream &SerialStream::operator<< (long aLong) {
@@ -117,8 +131,8 @@ SerialStream &SerialStream::operator<< (long aLong) {
     return (*this) << conversionBuffer;
 }
 
-SerialStream &SerialStream::operator<< (unsigned long anULong) {
-    return (*this) << long (anULong);
+SerialStream &SerialStream::operator<< (unsigned long aULong) {
+    return (*this) << long (aULong);
 }
 
 SerialStream &SerialStream::operator<< (float aFloat) {
@@ -134,13 +148,13 @@ SerialStream cin (Serial), cout (Serial);
 
 // ====== Timers
 
-static long Timer::currentTime = 0;
+long Timer::currentTime = 0;
 
 Timer::Timer () {
     resetIf (true);
 }
 
-static void Timer::tick () {
+void Timer::tick () {
     currentTime = millis ();
 }
 

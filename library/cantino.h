@@ -28,22 +28,23 @@ struct SerialStream {
 
     SerialStream (HardwareSerial &serial);
     
+    void read (char *const chars, bool breakOnBlank = true);
     SerialStream &operator>> (char *const chars);
     SerialStream &operator>> (bool &aBool);
     SerialStream &operator>> (char &aChar);
-    SerialStream &operator>> (unsigned char &anUChar);
+    SerialStream &operator>> (unsigned char &aUChar);
     SerialStream &operator>> (int &anInt);
-    SerialStream &operator>> (unsigned int &anUInt);
+    SerialStream &operator>> (unsigned int &aUInt);
     SerialStream &operator>> (long &aLong);
-    SerialStream &operator>> (unsigned long &anULong);
+    SerialStream &operator>> (unsigned long &aULong);
     SerialStream &operator>> (float &aFloat);
     
     SerialStream &operator<< (char const *const chars);
     SerialStream &operator<< (bool aBool);
     SerialStream &operator<< (char aChar);
-    SerialStream &operator<< (unsigned char anUChar);
+    SerialStream &operator<< (unsigned char aUChar);
     SerialStream &operator<< (int anInt);
-    SerialStream &operator<< (unsigned int anUInt);
+    SerialStream &operator<< (unsigned int aUInt);
     SerialStream &operator<< (long aLong);
     SerialStream &operator<< (unsigned long aULong);
     SerialStream &operator<< (float aFloat);
