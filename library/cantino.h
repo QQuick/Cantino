@@ -22,13 +22,17 @@ namespace cantino {
 
 // ====== Streams
 
+struct SerialStream;
+
 struct SerialStream {
     HardwareSerial *serial;
     char conversionBuffer [16];
+    bool echo;
 
     SerialStream (HardwareSerial &serial);
-    
+    void setecho (bool echo);
     void read (char *const chars, bool breakOnBlank = true);
+    
     SerialStream &operator>> (char *const chars);
     SerialStream &operator>> (bool &aBool);
     SerialStream &operator>> (char &aChar);
@@ -50,7 +54,10 @@ struct SerialStream {
     SerialStream &operator<< (float aFloat);
 };
 
+extern void getline (SerialStream &serialStream, char *const chars, bool breakOnBlank);
+
 extern char const endl;
+extern char const flush;
 
 #ifndef noCinCout
 extern SerialStream cin, cout;

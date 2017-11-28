@@ -4,6 +4,8 @@ SerialStream	KEYWORD1
 cin				KEYWORD2
 cout			KEYWORD2
 endl			KEYWORD2
+getline         KEYWORD2
+setecho         KEYWORD2
 
 Timer			KEYWORD1
 tick			KEYWORD2

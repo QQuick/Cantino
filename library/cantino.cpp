@@ -27,16 +27,23 @@ namespace cantino {
 // ====== Streams
 
 SerialStream::SerialStream (HardwareSerial &serial):
-    serial (&serial)
+    serial (&serial),
+    echo (true)
 {}
+
+void SerialStream::setecho (bool echo) {
+    this->echo = echo;
+}
 
 void SerialStream::read (char *const chars, bool breakOnBlank) {
     for (int index = 0; ; index++) {
-        while (!serial->available ()) {  // Wait for input
+        while (!serial->available ()) {     // Wait for input
         }
-        chars [index] = serial->read ();
-        serial->print (chars [index]);
-        if (chars [index] == '\n' or (breakOnBlank and chars [index] == ' ')) {
+        chars [index] = serial->read ();    // Read next char
+        if (echo) {                         // If echoing is on
+            serial->print (chars [index]);  // Give back the char via the serial port
+        }
+        if (chars [index] == '\n' or chars [index] == '\v' or (breakOnBlank and chars [index] == ' ')) {
             chars [index] = (char) 0;
             break;
         }
@@ -140,7 +147,12 @@ SerialStream &SerialStream::operator<< (float aFloat) {
     return (*this) << conversionBuffer;
 }
 
+void getline (SerialStream &serialStream, char *const chars) {
+    serialStream.read (chars, false);
+}
+
 char const endl = '\n';
+char const flush = '\v';
 
 #ifndef noCinCout
 SerialStream cin (Serial), cout (Serial);
