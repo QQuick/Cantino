@@ -14,7 +14,7 @@ See the License for the specific language governing permissions and
 limitations under the License.
 */
 
-#include <arduino.h>
+#include <Arduino.h>
 
 #if defined (_VARIANT_ARDUINO_DUE_X_)
 #include <avr/dtostrf.h>
