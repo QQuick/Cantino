@@ -16,7 +16,7 @@ limitations under the License.
 
 #pragma once
 
-#include <arduino.h>
+#include <Arduino.h>
 
 namespace cantino {
 
