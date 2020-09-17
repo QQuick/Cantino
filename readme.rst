@@ -17,3 +17,23 @@ To complete it successfully you only need two things: curiosity and persistence.
 You'll be a C++ programmer after that, so let's get started...
 
 Jacques de Hooge
+
+
+Remark: To use only the library, just download:
+
+https://github.com/QQuick/Cantino/tree/master/library/cantino.zip
+
+You can install it from the Arduino IDE as follows:
+
+- Go to https://github.com/QQuick/Cantino/blob/master/library/cantino.zip and click "download"
+- Install it from the Arduino IDE: Sketch->Include Library->Add .ZIP Library
+- Include it from the Arduino IDE: Sketch->Include Library->Include Library->cantino (Under "Contributed libraries")
+
+At he top of your program you need to add:
+
+*#include <cantino.h>*
+
+Your Arduino program can then be structured just like a normal C or C++ pogram,
+i.e. with an *int main ()* function.
+
+For C++ you can also use a subset of console streams, as demonstrated in the lessons.
